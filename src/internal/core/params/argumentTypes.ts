@@ -1,5 +1,8 @@
 import { BuidlerError, ERRORS } from "../errors";
 
+// NOTE: Types exported here have to be documented in config-env.ts due to a
+// problem in tsdoc
+
 /**
  * Provides an interface for every valid task argument type.
  */

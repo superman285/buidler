@@ -9,6 +9,15 @@ import * as argumentTypes from "../params/argumentTypes";
 import extenderManager from "./extenders-instance";
 import dsl from "./tasks-dsl-instance";
 
+// See comment in ../params/argumentTypes
+interface Types {
+  boolean: argumentTypes.ArgumentType<boolean>;
+  string: argumentTypes.ArgumentType<string>;
+  inputFile: argumentTypes.ArgumentType<string>;
+  int: argumentTypes.ArgumentType<number>;
+  float: argumentTypes.ArgumentType<number>;
+}
+
 export function task<ArgsT extends TaskArguments>(
   name: string,
   description?: string,
@@ -59,7 +68,7 @@ export function internalTask<ArgsT extends TaskArguments>(
   return dsl.internalTask(name, descriptionOrAction, action);
 }
 
-export const types = argumentTypes;
+export const types: Types = argumentTypes;
 
 /**
  * Register an environment extender what will be run after the

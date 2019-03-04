@@ -1,16 +1,17 @@
 {
   "scripts": {
-    "docs:dev": "vuepress dev .",
-    "docs:build": "vuepress build .",
-    "docs:deploy": "vuepress build . && sh deploy/deploy.sh --config-file deploy/.env",
-    "docs:apidocs": "typedoc --tsconfig ../tsconfig.prod.json"
+    "dev": "vuepress dev .",
+    "build": "vuepress build .",
+    "deploy": "vuepress build . && sh deploy/deploy.sh --config-file deploy/.env",
+    "apidocs": "typedoc --tsconfig ../tsconfig.dev.json"
   },
   "devDependencies": {
-    "dotenv": "^6.2.0",
-    "vuepress": "^0.14.8",
     "@microsoft/tsdoc": "^0.12.5",
+    "dotenv": "^6.2.0",
     "typedoc": "^0.14.2",
-    "typedoc-plugin-markdown": "^1.1.26"
+    "typedoc-plugin-markdown": "^1.1.27",
+    "typedoc-plugin-no-inherit": "^1.1.6",
+    "vuepress": "^0.14.10"
   },
   "private": true
 }

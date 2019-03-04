@@ -3,6 +3,7 @@
 
 # vuepress
 /docs/.vuepress/dist/
+/docs/api
 
 # TS compilation output
 /dev-build/

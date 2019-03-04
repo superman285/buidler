@@ -9,6 +9,10 @@ export interface ErrorDescription {
   message: string;
 }
 
+/**
+ * A Buidler error.
+ * @noInheritDoc
+ */
 export class BuidlerError extends Error {
   public readonly number: number;
   public readonly parent?: Error;
@@ -49,6 +53,7 @@ export class BuidlerError extends Error {
 /**
  * This class is used to throw errors from buidler plugins.
  * Resolves automatically the plugin's name from which it's being thrown.
+ * @noInheritDoc
  */
 export class BuidlerPluginError extends Error {
   public readonly pluginName: string;
