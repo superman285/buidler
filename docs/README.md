@@ -3,23 +3,19 @@ home: true
 heroImage: ./mascots.svg
 actionText: Get Started →
 actionLink: /a
+
+features:
+- title: Flexible
+  details: Use from the command line. Use as a library. Override default behaviour. Customize your workflow by creating your own tasks and installing your favorite plugins.
+- title: Reliable
+  details: Buidler's core is small, fast and maintained with very high standards of quality. Buidler will never stop working out of the blue.
+- title: Unopinionated
+  details: Web3.js, ethers.js, Truffle4, Truffle5 or Embark? Anything goes. Your tools, your libraries, your choices.
+
+
 footer: MIT Licensed | Copyright © 2018-present Nomic Labs SRL
 ---
 
-<div class="features">
-  <div class="feature">
-    <h2>Flexible</h2>
-    <p>Minimal setup with markdown-centered project structure helps you focus on writing.</p>
-  </div>
-  <div class="feature">
-    <h2>Reliable</h2>
-    <p>Enjoy the dev experience of Vue + webpack, use Vue components in markdown, and develop custom themes with Vue.</p>
-  </div>
-  <div class="feature">
-    <h2>Performant</h2>
-    <p>VuePress generates pre-rendered static HTML for each page, and runs as an SPA once a page is loaded.</p>
-  </div>
-</div>
 
 ### Start using it now
 
@@ -36,9 +32,4 @@ npx buidler test
 # run your custom scripts
 npx buidler run scripts/sample-script.js
 ```
-
-::: warning ETHEREUM NODE NOTE
-You need an Ethereum node running to use Buidler. \
-We recommend using [ganache-cli](https://www.npmjs.com/package/ganache-cli) for testing purposes.
-:::
 

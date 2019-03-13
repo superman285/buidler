@@ -1,6 +1,6 @@
 module.exports = {
   title: "Buidler",
-  description: "The extensible smart contract dev tool",
+  description: "The extensible Solidity developer tool",
   serviceWorker: true,
   themeConfig: {
     nav: [
