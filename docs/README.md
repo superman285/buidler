@@ -2,7 +2,7 @@
 home: true
 heroImage: ./mascots.svg
 actionText: Get Started →
-actionLink: /a
+actionLink: /guides/
 
 features:
 - title: Flexible

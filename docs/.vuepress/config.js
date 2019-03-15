@@ -5,6 +5,7 @@ module.exports = {
   themeConfig: {
     nav: [
       { text: "Home", link: "/" },
+      { text: "Guides", link: "/guides/#getting-started" },
       { text: "Documentation", link: "/documentation/" },
       { text: "API Docs", link: "/api/" },
       { text: "Nomic Labs", link: "https://nomiclabs.io" }
