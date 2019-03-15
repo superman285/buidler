@@ -10,7 +10,7 @@ features:
 - title: Reliable
   details: Buidler's core is small, fast and maintained with very high standards of quality. Buidler will never stop working out of the blue.
 - title: Unopinionated
-  details: Web3.js, ethers.js, Truffle4, Truffle5 or Embark? Anything goes. Your tools, your libraries, your choices.
+  details: Web3.js, ethers.js, Truffle4 or Truffle5? Anything goes. Your tools, your libraries, your choices.
 
 
 footer: MIT Licensed | Copyright © 2018-present Nomic Labs SRL
