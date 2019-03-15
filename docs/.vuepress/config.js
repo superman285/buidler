@@ -15,6 +15,12 @@ module.exports = {
     docsDir: "docs",
     docsBranch: "master",
     editLinkText: "Help us improve this page!",
-    editLinks: true
+    editLinks: true,
+    'sidebar': {
+      '/guides/': [
+        ['/guides/', 'Getting started'],
+        ['/guides/truffle-migration.md', 'Truffle migration']
+      ]
+    }
   }
 };
