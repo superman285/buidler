@@ -10,27 +10,6 @@ module.exports = {
       { text: "Nomic Labs", link: "https://nomiclabs.io" }
     ],
     lastUpdated: true,
-    sidebar: {
-      "/documentation/": [
-        {
-          title: "Documentation",
-          collapsable: false,
-          children: []
-        },
-        ["", "Overview"],
-        ["config", "Buidler configuration"],
-        {
-          title: "Tutorials",
-          collapsable: false,
-          children: ["tutorials/truffle-migration"]
-        },
-        {
-          title: "Advanced topics",
-          collapsable: false,
-          children: ["advanced/architecture"]
-        }
-      ]
-    },
     repo: "nomiclabs/buidler",
     docsDir: "docs",
     docsBranch: "master",
