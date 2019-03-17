@@ -148,37 +148,37 @@ For example, the `compile` task is implemented as a pipeline of six tasks. It ju
 
 The problem with this approach is that help messages would be cluttered with lots of uninteresting intermediate tasks. To avoid this, you can define those using the [`internalTask` config DSL function](). The `internalTask` function works almost exactly like `task`. Its only difference is that tasks defined with it won't be included in help messages.
 
-## The Buidler Runtime Environment
+## The Buidler Runtime Environment (BRE)
 
-The Buidler Runtime Environment is an object containing all the functionality that Buidler exposes when running a task, test and script.
+The Buidler Runtime Environment, or BRE for short, is an object containing all the functionality that Buidler exposes when running a task, test and script.
 
-By default, the Buidler Runtime Environment gives you programmatic access to the task runner and the config system, and exports an [EIP1193-compatible]() Ethereum provider. You can find more information about [it in its API docs]().
+By default, the BRE gives you programmatic access to the task runner and the config system, and exports an [EIP1193-compatible]() Ethereum provider. You can find more information about [it in its API docs]().
 
-Plugins can extend the Buidler Runtime Environment. For example, [buidler-web3](https://github.com/nomiclabs/buidler-web3) adds a `web3` instance to it, making it available to tasks, tests and scripts.
+Plugins can extend the BRE. For example, [buidler-web3](https://github.com/nomiclabs/buidler-web3) adds a `web3` instance to it, making it available to tasks, tests and scripts.
 
-### Globally exported Buidler Runtime Environment
+### Globally exported BRE
 
-Before running a task, test or script, Buidler injects the Buidler Runtime Environment into the global scope, turning all of its fields into global variables. When the task execution is completed, these global variables are removed, restoring their original value, if any.
+Before running a task, test or script, Buidler injects the BRE into the global scope, turning all of its fields into global variables. When the task execution is completed, these global variables are removed, restoring their original value, if any.
 
-### Explicitly importing the Buidler Runtime Environment
+### Explicitly importing the BRE
 
 Not everyone likes magic global variables, and Buidler doesn't force you to use them. Everything can be done explicitly in tasks, tests and scripts.
 
-You can [import the config DSL]() explicitly when defining your tasks, and receive the Buidler Runtime Environment explicitly as an argument to your actions. You can read more about this in [Creating your own tasks]().
+You can [import the config DSL]() explicitly when defining your tasks, and receive the BRE explicitly as an argument to your actions. You can read more about this in [Creating your own tasks]().
 
-When writing tests or scripts, you can use `require("@nomiclabs/buidler")` to import the Buidler Runtime Environment. You can read more about this in [Accessing the Buidler Runtime Environment]().
+When writing tests or scripts, you can use `require("@nomiclabs/buidler")` to import the BRE. You can read more about this in [Accessing the BRE]().
 
-### Extending the Buidler Runtime Environment
+### Extending the BRE
 
-The Buidler Runtime Environment only provides the core functionality that users and plugin developers need to start building on top of. Using them directly can be somewhat harder than expected.
+The BRE only provides the core functionality that users and plugin developers need to start building on top of. Using them directly can be somewhat harder than expected.
 
 Everything gets easier if you use higher-level libraries, like [web3.js]() or [truffle-contract](), but this libraries need some initialization to work, and that could get repetitive.
 
-Buidler lets you hook into the Buidler Runtime Environment construction, and extend it with new functionality. This way, you only have to initialize everything once, and your new features or libraries will be available everywhere the Buidler Runtime Environment is used.
+Buidler lets you hook into the BRE construction, and extend it with new functionality. This way, you only have to initialize everything once, and your new features or libraries will be available everywhere the BRE is used.
 
-You can do this by adding a Buidler Runtime Environment extender into a queue. This extender is just a synchronous function that receives the Buidler Runtime Environment, and adds fields to it with your new functionality. These new fields will also get [injected into the global scope during runtime]().
+You can do this by adding a BRE extender into a queue. This extender is just a synchronous function that receives the BRE, and adds fields to it with your new functionality. These new fields will also get [injected into the global scope during runtime]().
 
-For example, adding an instance of Web3.js to the Buidler Runtime Environment can be done in this way:
+For example, adding an instance of Web3.js to the BRE can be done in this way:
 
 ```js
 extendEnvironment(env => {
@@ -189,11 +189,11 @@ extendEnvironment(env => {
 });
 ```
 
-### Accessing the Buidler Runtime Environment from outside a task
+### Accessing the BRE from outside a task
 
-The Buidler Runtime Environment can be used from any Javascript or TypeScript file. To do so, you only have to import it with `require("@nomiclabs/buidler")`. You can do this to keep more control over your development workflow, create your own tools, or to use Buidler with other dev tools from the node.js ecosystem.
+The BRE can be used from any Javascript or TypeScript file. To do so, you only have to import it with `require("@nomiclabs/buidler")`. You can do this to keep more control over your development workflow, create your own tools, or to use Buidler with other dev tools from the node.js ecosystem.
 
-Running test directly with [mocha]() instead of `npx buidler test` can be done by explicitly importing the Buidler Runtime Environment in them like this:
+Running test directly with [mocha]() instead of `npx buidler test` can be done by explicitly importing the BRE in them like this:
 
 ```js
 const env = require("@nomiclabs/buidler");
@@ -290,9 +290,9 @@ Plugins are bits of reusable configuration. Anything that you can do in a plugin
 
 The main things that plugins can do are extending the Buidler Runtime Environment, extending the Buidler config, defining new tasks, and overriding existing ones.
 
-#### Extending the Buidler Runtime Environment
+#### Extending the BRE
 
-To learn how to successfully override the Buidler Runtime Environment in TypeScript, and to give your users type information about your extension, take a look at [`src/index.ts`](https://github.com/nomiclabs/buidler-ts-plugin-boilerplate/blob/master/src/index.ts) in the boilerplate repo.
+To learn how to successfully override the BRE in TypeScript, and to give your users type information about your extension, take a look at [`src/index.ts`](https://github.com/nomiclabs/buidler-ts-plugin-boilerplate/blob/master/src/index.ts) in the boilerplate repo.
 
 Make sure to keep the type extension in your main file, as that convention is used across different plugins.
 
