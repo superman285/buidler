@@ -1,4 +1,5 @@
 module.exports = {
+  base: '/buidler/',
   title: "Buidler",
   description: "The extensible Solidity developer tool",
   serviceWorker: true,
@@ -16,11 +17,18 @@ module.exports = {
     docsBranch: "master",
     editLinkText: "Help us improve this page!",
     editLinks: true,
-    'sidebar': {
-      '/guides/': [
-        ['/guides/', 'Getting started'],
-        ['/guides/truffle-migration.md', 'Truffle migration']
-      ]
+    sidebar: {
+      '/guides/': [{
+        title: "Guides",
+        collapsable: false,
+        children: [
+          ['/guides/', 'Getting started'],
+          ['/guides/truffle-migration.md', 'Truffle migration']
+        ]
+      }],
+      '/documentation/': {
+        sidebar: 'auto'
+      }
     }
   }
 };
