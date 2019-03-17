@@ -6,6 +6,7 @@ module.exports = {
   themeConfig: {
     nav: [
       { text: "Home", link: "/" },
+      { text: "Plugins", link: "/plugins/"},
       { text: "Guides", link: "/guides/#getting-started" },
       { text: "Documentation", link: "/documentation/" },
       { text: "API Docs", link: "/api/" },
@@ -22,8 +23,10 @@ module.exports = {
         title: "Guides",
         collapsable: false,
         children: [
-          ['/guides/', 'Getting started'],
-          ['/guides/truffle-migration.md', 'Truffle migration']
+          '/guides/',
+          'create-task',
+          'create-plugin',
+          'truffle-migration'
         ]
       }],
       '/documentation/': {
