@@ -13,7 +13,7 @@ features:
   details: Web3.js, ethers.js, Truffle4 or Truffle5? Anything goes. Your tools, your libraries, your choices.
 
 
-footer: MIT Licensed | Copyright © 2018-present Nomic Labs SRL
+footer: MIT Licensed | Copyright © 2018-2019 Nomic Labs SRL
 ---
 
 
