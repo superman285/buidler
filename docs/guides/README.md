@@ -24,9 +24,15 @@ Let’s create the sample project and go through the steps to try out the sample
 
 If you take a look at `buidler.config.js`, you will find the definition of the task `accounts`:
 
-![](https://cdn-images-1.medium.com/max/1600/1*t5LonfybZqIM8pc6qxevlA.png)
+```js
+task("accounts", "Prints a list of the available accounts", async () => {
+  const accounts = await ethereum.send("eth_accounts");
 
-[https://github.com/nomiclabs/buidler/blob/master/sample-project/buidler.config.js](https://github.com/nomiclabs/buidler/blob/master/sample-project/buidler.config.js)
+  console.log("Accounts:", accounts);
+});
+
+module.exports = {};
+```
 
 *NOTE: in the Buidler 1.0.0 beta release we’ve disabled the automatic ganache instance feature to keep working on its stability, so you’ll need to run it manually. This feature will be back by the time we ship the stable release. Run `ganache-cli.`*
 
@@ -38,9 +44,23 @@ If you would like to learn how to create your own tasks, take a look at our [ta
 
 Next, if you take a look at `contracts/`, you should be able to find `Greeter.sol:`
 
-![](https://cdn-images-1.medium.com/max/1600/1*GUedfMyZ50hN_Mj5gMcyHw.png)
+```js
+pragma solidity ^0.5.1;
 
-[https://github.com/nomiclabs/buidler/blob/master/sample-project/contracts/Greeter.sol](https://github.com/nomiclabs/buidler/blob/master/sample-project/contracts/Greeter.sol)
+contract Greeter {
+
+    string greeting;
+
+    constructor(string memory _greeting) public {
+        greeting = _greeting;
+    }
+
+    function greet() public view returns (string memory) {
+        return greeting;
+    }
+
+}
+```
 
 To compile it, simply run:
 
@@ -50,11 +70,11 @@ Now, you’ll likely want to run some tests. Out of the box Buidler provides an
 
 These are:
 
-- [@nomiclabs/buidler-truffle4](https://github.com/nomiclabs/buidler-truffle4)Integration with TruffleContract from Truffle 4.
-- [@nomiclabs/buidler-truffle5](https://github.com/nomiclabs/buidler-truffle5)Integration with TruffleContract from Truffle 5.
-- [@nomiclabs/buidler-web3](https://github.com/nomiclabs/buidler-web3)Injects the Web3 1.x module and a live instance into the Buidler Runtime Environment.
-- [@nomiclabs/buidler-web3-legacy](https://github.com/nomiclabs/buidler-web3-legacy)Injects the Web3 0.20.x module and a live instance into the Buidler Runtime Environment.
-- [@nomiclabs/buidler-ethers](https://github.com/nomiclabs/buidler-ethers)Injects ethers.js into the Buidler Runtime Environment.
+- [@nomiclabs/buidler-truffle4](https://github.com/nomiclabs/buidler-truffle4) Integration with TruffleContract from Truffle 4.
+- [@nomiclabs/buidler-truffle5](https://github.com/nomiclabs/buidler-truffle5) Integration with TruffleContract from Truffle 5.
+- [@nomiclabs/buidler-web3](https://github.com/nomiclabs/buidler-web3) Injects the Web3 1.x module and a live instance into the Buidler Runtime Environment.
+- [@nomiclabs/buidler-web3-legacy](https://github.com/nomiclabs/buidler-web3-legacy) Injects the Web3 0.20.x module and a live instance into the Buidler Runtime Environment.
+- [@nomiclabs/buidler-ethers](https://github.com/nomiclabs/buidler-ethers) Injects ethers.js into the Buidler Runtime Environment.
 
 The sample project comes with a test written using the Ethereum provider, but let’s also install `buidler-truffle5` and test out the Truffle 5 integration:
 
@@ -62,19 +82,47 @@ The sample project comes with a test written using the Ethereum provider, but le
 
 Add `require("@nomiclabs/buidler-truffle5")` to the top of your buidler.config.js, and let’s change `test/sample-test.js` to:
 
-![](https://cdn-images-1.medium.com/max/1600/1*c7UysbgJyp1qOJuf-aX8BA.png)
+```js
+const assert = require("assert");
 
-[https://gist.github.com/fzeoli/34fd7823c310072355affe6507623f49](https://gist.github.com/fzeoli/34fd7823c310072355affe6507623f49)
+describe("Ethereum provider", function() {
+  it("Should return the accounts", async function() {
+    const accounts = await ethereum.send("eth_accounts");
+    assert(accounts.length !== 0, "No account was returned");
+  });
+});
+
+contract("Greeter", function() {
+  it("Should give the correct greeting", async function() {
+    const Greeter = artifacts.require("Greeter");
+    const greeter = await Greeter.new("Hello, Buidler!");
+
+    assert.equal(await greeter.greet(), "Hello, Buidler!");
+  });
+});
+```
 
 And run `npx buidler test`
 
 ![](https://cdn-images-1.medium.com/max/1600/1*jI5V8qIjm6_iz7mFxxsFPg.png)
 
-You can then deploy by writing a deployment script with the Truffle 5 plugin:
+You can then deploy by writing a deployment script `deploy.js` with the Truffle 5 plugin:
 
-![](https://cdn-images-1.medium.com/max/1600/1*0eTCnSdpRDF7jBDiYjN8gQ.png)
+```js
+async function main() {
+  const Greeter = artifacts.require("Greeter");
 
-[https://gist.github.com/fzeoli/46e7a1acf657e4e30f0b4e7efcdcb947](https://gist.github.com/fzeoli/46e7a1acf657e4e30f0b4e7efcdcb947)
+  const greeter = await Greeter.new("Hello, Buidler!");
+  console.log("Greeter deployed to:", greeter.address);
+}
+
+main()
+  .then(() => process.exit(0))
+  .catch(error => {
+    console.error(error);
+    process.exit(1);
+  });
+```
 
 `npx buidler run scripts/deploy.js`
 
