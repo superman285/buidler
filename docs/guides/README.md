@@ -1,6 +1,6 @@
 ---
 prev: false
-next: 'truffle-migration'
+next: 'create-task'
 ---
 # Getting started
 
