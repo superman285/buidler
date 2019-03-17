@@ -1,11 +1,9 @@
 ---
 prev: false
-next: false
-#sidebar: auto
+next: 'truffle-migration'
 ---
-# Guides
+# Getting started
 
-## Getting started
 In this guide, we’ll explore how to start using Buidler in your Ethereum project.
 
 **What makes Buidler special? What can you achieve with it?**
