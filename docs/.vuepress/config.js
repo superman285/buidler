@@ -9,7 +9,7 @@ module.exports = {
       { text: "Plugins", link: "/plugins/"},
       { text: "Guides", link: "/guides/#getting-started" },
       { text: "Documentation", link: "/documentation/" },
-      { text: "API Docs", link: "/api/" },
+      { text: "API", link: "/api/" },
       { text: "Nomic Labs", link: "https://nomiclabs.io" }
     ],
     lastUpdated: true,
