@@ -148,7 +148,7 @@ For example, the `compile` task is implemented as a pipeline of six tasks. It ju
 
 The problem with this approach is that help messages would be cluttered with lots of uninteresting intermediate tasks. To avoid this, you can define those using the [`internalTask` config DSL function](). The `internalTask` function works almost exactly like `task`. Its only difference is that tasks defined with it won't be included in help messages.
 
-## The Buidler Runtime Environment (BRE)
+## Buidler Runtime Environment (BRE)
 
 The Buidler Runtime Environment, or BRE for short, is an object containing all the functionality that Buidler exposes when running a task, test and script.
 
@@ -156,11 +156,11 @@ By default, the BRE gives you programmatic access to the task runner and the con
 
 Plugins can extend the BRE. For example, [buidler-web3](https://github.com/nomiclabs/buidler-web3) adds a `web3` instance to it, making it available to tasks, tests and scripts.
 
-### Globally exported BRE
+### Exporting globally
 
 Before running a task, test or script, Buidler injects the BRE into the global scope, turning all of its fields into global variables. When the task execution is completed, these global variables are removed, restoring their original value, if any.
 
-### Explicitly importing the BRE
+### Explicit usage
 
 Not everyone likes magic global variables, and Buidler doesn't force you to use them. Everything can be done explicitly in tasks, tests and scripts.
 
@@ -168,7 +168,7 @@ You can [import the config DSL]() explicitly when defining your tasks, and recei
 
 When writing tests or scripts, you can use `require("@nomiclabs/buidler")` to import the BRE. You can read more about this in [Accessing the BRE]().
 
-### Extending the BRE
+### Extending
 
 The BRE only provides the core functionality that users and plugin developers need to start building on top of. Using them directly can be somewhat harder than expected.
 
@@ -189,7 +189,7 @@ extendEnvironment(env => {
 });
 ```
 
-### Accessing the BRE from outside a task
+### Accessing from outside a task
 
 The BRE can be used from any Javascript or TypeScript file. To do so, you only have to import it with `require("@nomiclabs/buidler")`. You can do this to keep more control over your development workflow, create your own tools, or to use Buidler with other dev tools from the node.js ecosystem.
 
@@ -212,7 +212,7 @@ This way, tests written for Buidler are just normal mocha tests. This enables yo
 
 Buidler is exporting a Javascript from a `buidler.config.js` file, which, by default, lives in the root of your project.
 
-The entirety of your Builder setup is contained in this file. Feel free to add any configs you may find useful for your project, just make sure to assign them to `module.exports` so they'll be accessible later on through the config object in the [Builder Runtime Environment](advanced/architecture.md#the-buidler-runtime-environment). 
+The entirety of your Builder setup is contained in this file. Feel free to add any configs you may find useful for your project, just make sure to assign them to `module.exports` so they'll be accessible later on through the config object in the Builder Runtime Environment.
 
 An empty `builder.config.js` is enough for builder to work.
 
