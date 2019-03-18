@@ -8,21 +8,21 @@ sidebar: auto
 ## Overview
 Buidler is designed around the concepts of tasks, and the Buidler Runtime Environment, a set of functionality available for tasks. This document describes both concepts in detail.
 
-**You don't need to read this to use Buidler, you can get started with it by reading [this guide](https://medium.com/nomic-labs-blog/how-to-get-started-with-buidler-68beb6b9bb04).**
+**You don't need to read this to use Buidler, you can get started with it by reading [this guide](/guides/#getting-started).**
 
 If you want to write your own tasks, create your own plugins, or are just curious about Buidler internals, keep reading.
 
 ## Tasks
 
-Buidler helps smart contract developers automate their workflow by letting them run and create tasks. Tasks can call other tasks, so complex workflows can be defined. Users and plugins can override existing tasks, making those workflows customizable and extendable.
+Buidler helps smart contract developers automate their workflow by letting them run and create tasks. Tasks can call other tasks, allowing complex workflows to be defined. Users and plugins can override existing tasks, making those workflows customizable and extendable.
 
-A task is a javascript async function with some associated metadata. This metadata is used by Buidler to automate some things for you. Arguments parsing, validation, and help messages are taken care of.
+A task is a JavaScript async function with some associated metadata. This metadata is used by Buidler to automate some things for you. Arguments parsing, validation, and help messages are taken care of.
 
 ### Creating your own tasks
 
 You can create your own tasks in your `buidler.config.js` file. The [Config DSL]() will be available in the global environment, with functions for defining tasks. You can also import the DSL with `require("@nomiclabs/buidler/config")` if you prefer to keep things explicit, and take advantage of your editor's autocomplete.
 
-Creating a task is done by calling the [`task` function](). It will return a [`TaskDefinition`]() object, which can be used to [define the task's parameters]. There are multiple ways of calling `task`, we read about all of them, take a look at [its API documentation]().
+Creating a task is done by calling the [`task` function](/api/#task). It will return a [`TaskDefinition`](/api/interfaces/taskdefinition.html) object, which can be used to define the task's parameters. There are multiple ways of calling `task`, take a look at [its API documentation](/api/#task).
 
 The simplest task you can define is
 
@@ -35,11 +35,12 @@ task(
 );
 ```
 
-`task`'s first argument is the task name. The second one is its description, which is used for printing help messages in the CLI. The third one, action, is an async function that receives the following arguments:
+`task`'s first argument is the task name. The second one is its description, which is used for printing help messages in the CLI. The third one, `action`, is an async function that receives the following arguments:
 
-`taskArguments` is an object with the parsed CLI arguments of the task. In this case, it's an empty object.
-`env` is the [Buidler Runtime Environment]().
-[`runSuper`]() is only relevant if you are overriding an existing task. It lets you run the original task's action.
+* `taskArguments` is an object with the parsed CLI arguments of the task. In this case, it's an empty object.
+* `env` is the [Buidler Runtime Environment](/documentation/#buidler-runtime-environment-bre).
+* `runSuper` is only relevant if you are overriding an existing task, which we'll learn about next. Its purpose is to let you run the original task's action.
+
 Defining the action's arguments is optional. The Buidler Runtime Environment and `runSuper` will also be available in the global scope. We can rewrite our "hello" task this way:
 
 ```js
@@ -79,7 +80,7 @@ Manually creating a `Promise` can look challenging, but you don't have to do tha
 
 #### Defining parameters
 
-Buidler tasks can receive `--named` parameters with a value, `--flags`, positional and variadic parameters. Variadic parameters act like javascript's rest parameters. The [Config DSL]() `task` returns an object with methods to define all of them. Once defined, Buidler takes control of parsing, validating them, and printing help messages.
+Buidler tasks can receive `--named` parameters with a value, `--flags`, positional and variadic parameters. Variadic parameters act like JavaScript's rest parameters. The [Config DSL]() `task` function returns an object with methods to define all of them. Once defined, Buidler takes control of parsing parameters, validating them, and printing help messages.
 
 Adding a positional parameter to the `hello` task can look like this:
 
@@ -91,22 +92,22 @@ task("hello", "Prints a greeting'")
 
 And would be run with `npx buidler hello --greeting Hola`.
 
-You can read the full documentation of these methods and their possible parameters in [their API docs]().
+You can read the full documentation of these methods and their possible parameters in the [TaskDefinition API doc](api/interfaces/taskdefinition.html#methods).
 
 ##### Positional parameters restrictions
 
 Positional and variadic parameters don't have to be named, and have the usual restrictions of a programming language:
 
-No parameter can follow a variadic one
-Required/mandatory parameters can't follow an optional one.
+* No parameter can follow a variadic one
+* Required/mandatory parameters can't follow an optional one.
 
 Failing to follow these restrictions will result in an exception being thrown when loading Buidler.
 
 ##### Type validations
 
-Buidler solves validating and parsing the values provided for each parameter. You can declare the type of a parameter, and Buidler will get the CLI strings and convert it into your desired type. If this conversion fails, it will print an error message explaining why.
+Buidler takes care of validating and parsing the values provided for each parameter. You can declare the type of a parameter, and Buidler will get the CLI strings and convert it into your desired type. If this conversion fails, it will print an error message explaining why.
 
-A number of types are available in the Config DSL through a `types` object. This object is injected into the global scope before processing your `buidler.config.js`, but you can also import it with `const { types } = require("@nomiclabs/buidler/config")` and take advantage of your editor's autocomplete.
+A number of types are available in the Config DSL through a `types` object. This object is injected into the global scope before processing your `buidler.config.js`, but you can also import it explicitly with `const { types } = require("@nomiclabs/buidler/config")` and take advantage of your editor's autocomplete.
 
 An example of a task defining a type for one of its parameters is
 
@@ -136,29 +137,29 @@ Overriding built-in tasks is a great way to customize and extend Buidler. To kno
 
 `runSuper` is a function available to override task's actions. It can be received as the third argument of the task or used directly from the global object.
 
-This function works like [javascript's `super` keyword](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/super), it calls the tasks' previous action.
+This function works like [JavaScript's `super` keyword](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/super), it calls the task's previously defined action.
 
-The `runSuper` function receives a single optional argument, an object with the task arguments. If this argument isn't provided, the same task arguments received by the action calling it will be used.
+The `runSuper` function receives a single optional argument: an object with the task arguments. If this argument isn't provided, the same task arguments received by the action calling it will be used.
 
 ### Internal tasks
 
-Creating tasks with lots of logic makes it hard to extend or customizing them. Making multiple small and focused tasks that call each other is better for that purpose. If you design your tasks in this way, users that want to change only a small aspect of them can override one of your intermediate tasks.
+Creating tasks with lots of logic makes it hard to extend or customize them. Making multiple small and focused tasks that call each other is better to allow for extension. If you design your tasks in this way, users that want to change only a small aspect of them can override one of your internal tasks.
 
-For example, the `compile` task is implemented as a pipeline of six tasks. It just calls these intermediate tasks like `compile:get-source-paths`, `compile:get-dependency-graph`, and `compile:build-artifacts`. We recommend prefixing intermediate tasks with their main task and a colon.
+For example, the `compile` task is implemented as a pipeline of six tasks. It just calls internal tasks like `compile:get-source-paths`, `compile:get-dependency-graph`, and `compile:build-artifacts`. We recommend prefixing intermediate tasks with their main task and a colon.
 
-The problem with this approach is that help messages would be cluttered with lots of uninteresting intermediate tasks. To avoid this, you can define those using the [`internalTask` config DSL function](). The `internalTask` function works almost exactly like `task`. Its only difference is that tasks defined with it won't be included in help messages.
+To avoid help messages getting cluttered with lots of intermediate tasks, you can define those using the [`internalTask` config DSL function](). The `internalTask` function works almost exactly like `task`. The only difference is that tasks defined with it won't be included in help messages.
 
 ## Buidler Runtime Environment (BRE)
 
 The Buidler Runtime Environment, or BRE for short, is an object containing all the functionality that Buidler exposes when running a task, test and script.
 
-By default, the BRE gives you programmatic access to the task runner and the config system, and exports an [EIP1193-compatible]() Ethereum provider. You can find more information about [it in its API docs]().
+By default, the BRE gives you programmatic access to the task runner and the config system, and exports an [EIP1193-compatible](https://eips.ethereum.org/EIPS/eip-1193) Ethereum provider. You can find more information about [it in its API docs](/api/classes/environment.html).
 
 Plugins can extend the BRE. For example, [buidler-web3](https://github.com/nomiclabs/buidler-web3) adds a `web3` instance to it, making it available to tasks, tests and scripts.
 
 ### Exporting globally
 
-Before running a task, test or script, Buidler injects the BRE into the global scope, turning all of its fields into global variables. When the task execution is completed, these global variables are removed, restoring their original value, if any.
+Before running a task, test or script, Buidler injects the BRE into the global scope, turning all of its fields into global variables. When the task execution is completed, these global variables are removed, restoring their original value, if they had one.
 
 ### Explicit usage
 
@@ -166,13 +167,13 @@ Not everyone likes magic global variables, and Buidler doesn't force you to use 
 
 You can [import the config DSL]() explicitly when defining your tasks, and receive the BRE explicitly as an argument to your actions. You can read more about this in [Creating your own tasks]().
 
-When writing tests or scripts, you can use `require("@nomiclabs/buidler")` to import the BRE. You can read more about this in [Accessing the BRE]().
+When writing tests or scripts, you can use `require("@nomiclabs/buidler")` to import the BRE. You can read more about this in [Accessing the BRE from outside a task](/documentation/#accessing-from-outside-a-task).
 
 ### Extending
 
-The BRE only provides the core functionality that users and plugin developers need to start building on top of. Using them directly can be somewhat harder than expected.
+The BRE only provides the core functionality that users and plugin developers need to start building on top of Buidler. Using it directly in your project can be somewhat harder than expected.
 
-Everything gets easier if you use higher-level libraries, like [web3.js]() or [truffle-contract](), but this libraries need some initialization to work, and that could get repetitive.
+Everything gets easier when you use higher-level libraries, like [web3.js](https://web3js.readthedocs.io/en/latest/) or [truffle-contract](https://github.com/trufflesuite/truffle-contract), but these libraries need some initialization to work, and that could get repetitive.
 
 Buidler lets you hook into the BRE construction, and extend it with new functionality. This way, you only have to initialize everything once, and your new features or libraries will be available everywhere the BRE is used.
 
@@ -191,7 +192,7 @@ extendEnvironment(env => {
 
 ### Accessing from outside a task
 
-The BRE can be used from any Javascript or TypeScript file. To do so, you only have to import it with `require("@nomiclabs/buidler")`. You can do this to keep more control over your development workflow, create your own tools, or to use Buidler with other dev tools from the node.js ecosystem.
+The BRE can be used from any JavaScript or TypeScript file. To do so, you only have to import it with `require("@nomiclabs/buidler")`. You can do this to keep more control over your development workflow, create your own tools, or to use Buidler with other dev tools from the node.js ecosystem.
 
 Running test directly with [mocha]() instead of `npx buidler test` can be done by explicitly importing the BRE in them like this:
 
@@ -210,9 +211,9 @@ This way, tests written for Buidler are just normal mocha tests. This enables yo
 
 ## Configuration
 
-Buidler is exporting a Javascript from a `buidler.config.js` file, which, by default, lives in the root of your project.
+Buidler is exporting a JavaScript object from a `buidler.config.js` file, which, by default, lives in the root of your project.
 
-The entirety of your Builder setup is contained in this file. Feel free to add any configs you may find useful for your project, just make sure to assign them to `module.exports` so they'll be accessible later on through the config object in the Builder Runtime Environment.
+The entirety of your Builder setup is contained in this file. Feel free to add any ad-hoc configs you may find useful for your project, just make sure to assign them to `module.exports` so they'll be accessible later on through the config object in the [Builder Runtime Environment](/documentation/#buidler-runtime-environment-bre).
 
 An empty `builder.config.js` is enough for builder to work.
 
@@ -292,7 +293,7 @@ The main things that plugins can do are extending the Buidler Runtime Environmen
 
 #### Extending the BRE
 
-To learn how to successfully override the BRE in TypeScript, and to give your users type information about your extension, take a look at [`src/index.ts`](https://github.com/nomiclabs/buidler-ts-plugin-boilerplate/blob/master/src/index.ts) in the boilerplate repo.
+To learn how to successfully extend the [BRE](/documentation/#buidler-runtime-environment-bre) in TypeScript, and to give your users type information about your extension, take a look at [`src/index.ts`](https://github.com/nomiclabs/buidler-ts-plugin-boilerplate/blob/master/src/index.ts) in the boilerplate repo and read the [Extending the BRE](/documentation/#extending) documentation.
 
 Make sure to keep the type extension in your main file, as that convention is used across different plugins.
 
@@ -304,7 +305,7 @@ Note that all config extension's have to be optional.
 
 #### Throwing errors from your plugins
 
-To show better stack traces to your users, please only throw `BuidlerPluginError` errors, which can be found in `@nomiclabs/buidler/plugins`.
+To show better stack traces to your users, please only throw [`BuidlerPluginError`](/api/classes/buidlerpluginerror.html#constructors) errors, which can be found in `@nomiclabs/buidler/plugins`.
 
 #### Optimizing your plugin for better startup time
 
@@ -324,7 +325,7 @@ If you are still in doubt, these can be helpful:
 
 Also, if you depend on a Buidler plugin written in TypeScript, you should add it's main `.d.ts` to the `include` array of `tsconfig.json`.
 
-### Recommended built-in tasks overrides
+### Hooking into the user's workflow
 
 To integrate into your users' existing workflow, we recommend plugin authors to override built-in tasks whenever it makes sense. 
 
