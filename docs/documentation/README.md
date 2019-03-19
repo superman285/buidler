@@ -20,7 +20,7 @@ A task is a JavaScript async function with some associated metadata. This metada
 
 ### Creating your own tasks
 
-You can create your own tasks in your `buidler.config.js` file. The [Config DSL]() will be available in the global environment, with functions for defining tasks. You can also import the DSL with `require("@nomiclabs/buidler/config")` if you prefer to keep things explicit, and take advantage of your editor's autocomplete.
+You can create your own tasks in your `buidler.config.js` file. The Config DSL will be available in the global environment, with functions for defining tasks. You can also import the DSL with `require("@nomiclabs/buidler/config")` if you prefer to keep things explicit, and take advantage of your editor's autocomplete.
 
 Creating a task is done by calling the [`task` function](/api/#task). It will return a [`TaskDefinition`](/api/interfaces/taskdefinition.html) object, which can be used to define the task's parameters. There are multiple ways of calling `task`, take a look at [its API documentation](/api/#task).
 
@@ -80,7 +80,7 @@ Manually creating a `Promise` can look challenging, but you don't have to do tha
 
 #### Defining parameters
 
-Buidler tasks can receive `--named` parameters with a value, `--flags`, positional and variadic parameters. Variadic parameters act like JavaScript's rest parameters. The [Config DSL]() `task` function returns an object with methods to define all of them. Once defined, Buidler takes control of parsing parameters, validating them, and printing help messages.
+Buidler tasks can receive `--named` parameters with a value, `--flags`, positional and variadic parameters. Variadic parameters act like JavaScript's rest parameters. The Config DSL `task` function returns an object with methods to define all of them. Once defined, Buidler takes control of parsing parameters, validating them, and printing help messages.
 
 Adding a positional parameter to the `hello` task can look like this:
 
@@ -147,7 +147,7 @@ Creating tasks with lots of logic makes it hard to extend or customize them. Mak
 
 For example, the `compile` task is implemented as a pipeline of six tasks. It just calls internal tasks like `compile:get-source-paths`, `compile:get-dependency-graph`, and `compile:build-artifacts`. We recommend prefixing intermediate tasks with their main task and a colon.
 
-To avoid help messages getting cluttered with lots of intermediate tasks, you can define those using the [`internalTask` config DSL function](). The `internalTask` function works almost exactly like `task`. The only difference is that tasks defined with it won't be included in help messages.
+To avoid help messages getting cluttered with lots of intermediate tasks, you can define those using the `internalTask` config DSL function. The `internalTask` function works almost exactly like `task`. The only difference is that tasks defined with it won't be included in help messages.
 
 ## Buidler Runtime Environment (BRE)
 
@@ -165,7 +165,7 @@ Before running a task, test or script, Buidler injects the BRE into the global s
 
 Not everyone likes magic global variables, and Buidler doesn't force you to use them. Everything can be done explicitly in tasks, tests and scripts.
 
-You can [import the config DSL]() explicitly when defining your tasks, and receive the BRE explicitly as an argument to your actions. You can read more about this in [Creating your own tasks]().
+You can import the config DSL explicitly when defining your tasks, and receive the BRE explicitly as an argument to your actions. You can read more about this in [Creating your own tasks]().
 
 When writing tests or scripts, you can use `require("@nomiclabs/buidler")` to import the BRE. You can read more about this in [Accessing the BRE from outside a task](/documentation/#accessing-from-outside-a-task).
 
