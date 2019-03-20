@@ -4,6 +4,7 @@ module.exports = {
   description: "The extensible Solidity developer tool",
   serviceWorker: true,
   themeConfig: {
+    logo: "logo.png",
     nav: [
       { text: "Home", link: "/" },
       { text: "Plugins", link: "/plugins/"},
