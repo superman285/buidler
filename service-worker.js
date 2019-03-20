@@ -21,127 +21,127 @@ importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox
 self.__precacheManifest = [
   {
     "url": "404.html",
-    "revision": "37b4214442851441f77687aa3f3508c9"
+    "revision": "729d251a26bbbfacdfa68fde835c9776"
   },
   {
     "url": "api/classes/buidlererror.html",
-    "revision": "8fb31eb5a44a1953a36bec0a399e6355"
+    "revision": "63cd5ddc03b3355e2d7628636ec1daa1"
   },
   {
     "url": "api/classes/buidlerpluginerror.html",
-    "revision": "e374c34ceb6c813626225817bf02ae81"
+    "revision": "73ac30ad253dcbea643c14b5bb44f071"
   },
   {
     "url": "api/classes/environment.html",
-    "revision": "19bb007a7a66dd756f81be4a288fb33d"
+    "revision": "9abb92724367d1a4abf712a95555ee72"
   },
   {
     "url": "api/classes/overriddentaskdefinition.html",
-    "revision": "2e788eb67f65ca4b2c36495bc38c86c5"
+    "revision": "55a3b70cb3a34ccb04434882eb8f39e3"
   },
   {
     "url": "api/classes/simpletaskdefinition.html",
-    "revision": "9b4a5217774ae711eb880a9cd7e12b12"
+    "revision": "8380e6dee48566594ea032305f71bd35"
   },
   {
     "url": "api/classes/tasksdsl.html",
-    "revision": "370f3df752cda0038bd6c3acb3e8e42f"
+    "revision": "81b2e252c39cd49d0ffd57120e3a4b8f"
   },
   {
     "url": "api/index.html",
-    "revision": "f8cd007744c89329ea3bfd275b10b026"
+    "revision": "2a137d812b6aca20b72d85426eab65a2"
   },
   {
     "url": "api/interfaces/argumenttype.html",
-    "revision": "b12b88234dc7afd042082bd9f884db18"
+    "revision": "8a120e578d0b18749edc983870a4807c"
   },
   {
     "url": "api/interfaces/artifact.html",
-    "revision": "162ae61b3f820ccd39a356830c7582bf"
+    "revision": "a193e2ec3635a9dea858c293b0a839f3"
   },
   {
     "url": "api/interfaces/autonetworkconfig.html",
-    "revision": "7ca71890297adee9368d6809b58b582a"
+    "revision": "fa1c39c2ec91dc6ae2ded8577996245a"
   },
   {
     "url": "api/interfaces/buidlerarguments.html",
-    "revision": "02868ffc8f6bd73fdcad6450cbc2a191"
+    "revision": "9e540fccf7e1b3466ef52e49ff156726"
   },
   {
     "url": "api/interfaces/buidlerconfig.html",
-    "revision": "fac94d7a2918446b4ff22485e82bce22"
+    "revision": "b8f305a114979f7dc7c5bfb1a97aa06a"
   },
   {
     "url": "api/interfaces/buidlerruntimeenvironment.html",
-    "revision": "c4b028540d36811634923c0d08667ef0"
+    "revision": "aa0dff8614e22da25e3b60023b9dfade"
   },
   {
     "url": "api/interfaces/configurabletaskdefinition.html",
-    "revision": "e9ed5497afad1625650e7c1f53ecd217"
+    "revision": "9d52c493414762069d0ab0ee2f41c760"
   },
   {
     "url": "api/interfaces/errordescription.html",
-    "revision": "03c278f766722598f34cb1625f73ef17"
+    "revision": "b51b05e790a7c924a77ff9cd52e6c46a"
   },
   {
     "url": "api/interfaces/hdaccountsconfig.html",
-    "revision": "fcfd5d89bf690f935c9952183559fe4f"
+    "revision": "81d00957712d5766f76281e51be571f7"
   },
   {
     "url": "api/interfaces/httpnetworkconfig.html",
-    "revision": "da9ff18bd24d2abaec332d12383b0259"
+    "revision": "3ffb20133e2d7e1f3841bc93a649fce9"
   },
   {
     "url": "api/interfaces/networks.html",
-    "revision": "323fb7bf8b59e84f30a393938138bbc1"
+    "revision": "19ef63d29b0dfa19e166cbf5593a8538"
   },
   {
     "url": "api/interfaces/optionalparamdefinition.html",
-    "revision": "edb0f973aa7b6bf6b3a0111c80536c4d"
+    "revision": "355b3a1651dfbb9b0a58f8eb12e42f8d"
   },
   {
     "url": "api/interfaces/otheraccountsconfig.html",
-    "revision": "09856ffff085cca30202026cbfd897da"
+    "revision": "e8156e568572a7fcd3484dce1c0615f4"
   },
   {
     "url": "api/interfaces/paramdefinition.html",
-    "revision": "2d9137942c01a496247037f0b6922bbb"
+    "revision": "4f507069c01e9146f4c621223fda2bd5"
   },
   {
     "url": "api/interfaces/paramdefinitionsmap.html",
-    "revision": "41c3fc4d7ffa2c77dabc21df6ff0573d"
+    "revision": "de91c1331ff9f1a6611e14ed52b82693"
   },
   {
     "url": "api/interfaces/projectpaths.html",
-    "revision": "74616e5f01f0d42fc13b16e8c1cfd7ee"
+    "revision": "b57508863984cf2b91a30520f6ca53f4"
   },
   {
     "url": "api/interfaces/resolvedbuidlerconfig.html",
-    "revision": "410ff4a7c4e26ca4fa176b0b3b957282"
+    "revision": "7079d8bd2b17814159b1c35a6e7e2175"
   },
   {
     "url": "api/interfaces/solcconfig.html",
-    "revision": "2238fe24a84abad9c0bc9ce4038f983b"
+    "revision": "3bf34e31a599fffe9087f71876103668"
   },
   {
     "url": "api/interfaces/solcoptimizerconfig.html",
-    "revision": "1e33fbab87e5ae80cbf0d9d2f66780fa"
+    "revision": "b7056e8e77467e0553ad179c59cc1678"
   },
   {
     "url": "api/interfaces/taskarguments.html",
-    "revision": "d816b554d6c8991998b4bbfab75b64cc"
+    "revision": "bbc1a30bb5fe59a2e18f174b223809aa"
   },
   {
     "url": "api/interfaces/taskdefinition.html",
-    "revision": "270be18d959e5c5b347e54a6cb597780"
+    "revision": "5652c95964218786f7cb33c808146dd6"
   },
   {
     "url": "api/interfaces/tasksmap.html",
-    "revision": "77f837b45eac698812fd34f4819721de"
+    "revision": "f68745327a82cb6decbb85aae49ae583"
   },
   {
-    "url": "assets/css/0.styles.ad6ea3ed.css",
-    "revision": "4538d71712edd05cc37a7ef5fe0f43cc"
+    "url": "assets/css/0.styles.635ba650.css",
+    "revision": "d67ef90beec9342bacca2c66f901d024"
   },
   {
     "url": "assets/img/search.83621669.svg",
@@ -300,32 +300,36 @@ self.__precacheManifest = [
     "revision": "e6a69725ea184d70cce40cad17b96fd1"
   },
   {
-    "url": "assets/js/app.96a39ed9.js",
-    "revision": "91f1fc178f23f036f4e4a2c313f044bd"
+    "url": "assets/js/app.771a54c4.js",
+    "revision": "43a4fdcbcbafecffc3c669e23e38cd73"
   },
   {
     "url": "documentation/index.html",
-    "revision": "d9dc2652bad172e7e4776cb68603bc42"
+    "revision": "6729808533fbe8f3069c29bc40c688bd"
   },
   {
     "url": "guides/create-plugin.html",
-    "revision": "fcc671a7608f4dbd37fd8f2f9bd61215"
+    "revision": "359fe847a58c732972c457869dc2f163"
   },
   {
     "url": "guides/create-task.html",
-    "revision": "9c76745564d0167fefa9a9a0fc570e86"
+    "revision": "13294ba590934e247f5e4bc75d76c86c"
   },
   {
     "url": "guides/index.html",
-    "revision": "db79d72a455450f46970dc2893d08cda"
+    "revision": "e2eeecc6d86b66a6cc1a9f370cdc6c03"
   },
   {
     "url": "guides/truffle-migration.html",
-    "revision": "f6a111ce23172bb6da73201b07d91105"
+    "revision": "a519980c9aaa35a8b3c5b1a710194248"
   },
   {
     "url": "index.html",
-    "revision": "1e585d5b08f928aaaf2e0182e6d16a52"
+    "revision": "2f7336ae3db030944a5f766a126a984a"
+  },
+  {
+    "url": "logo.png",
+    "revision": "517e531564e8a45e68a421719e4e59ef"
   },
   {
     "url": "mascots.svg",
@@ -333,7 +337,7 @@ self.__precacheManifest = [
   },
   {
     "url": "plugins/index.html",
-    "revision": "862ec2cf0bf06e810fe10006e2bae282"
+    "revision": "67d7cac6c44d68750eeb99acbc3aa3e7"
   },
   {
     "url": "sam-fem.svg",
