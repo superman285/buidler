@@ -1,5 +1,5 @@
 ---
-home: true
+home: true 
 heroImage: ./mascots.svg
 actionText: Get Started →
 actionLink: /guides/
