@@ -21,7 +21,7 @@ footer: MIT Licensed | Copyright © 2018-2019 Nomic Labs SRL
 
 ```bash
 # install
-npm i -save-dev @nomiclabs/buidler # or yarn add -D @nomiclabs/buidler 
+npm i --save-dev @nomiclabs/buidler # or yarn add -D @nomiclabs/buidler 
 
 # in a separate terminal
 npx ganache-cli
