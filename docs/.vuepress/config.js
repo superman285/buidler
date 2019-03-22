@@ -1,5 +1,4 @@
 module.exports = {
-  base: '/buidler/',
   title: "Buidler",
   description: "The extensible Solidity developer tool",
   serviceWorker: true,
