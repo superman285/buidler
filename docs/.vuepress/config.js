@@ -2,6 +2,7 @@ module.exports = {
   title: "Buidler",
   description: "The extensible Solidity developer tool",
   serviceWorker: true,
+  ga: 'UA-117668706-2',
   themeConfig: {
     logo: "logo.png",
     nav: [
